@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
@@ -31,8 +32,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "Contact", href: "/contact", icon: "message" },
 ];
 
-const LOGO_URL =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuBgm6wlQGhUzj1SNcVFxrtCwNeikwXhnfvX3WT6eDICCvxWddszlwLPZdnfJimiY3acTq8AMEhF3BL8puTrRw5POhCsvfnR5ie6tp_Hm-Jm6z6yVKu0cABkfGvZPxM2KWfeUkIn-dbdQf_yc7XvFX_n0fiHGko-WrAV-T-or6HoH9Rl6HzFVwV4iYOL2stTDKJc6TPkwaweakh_JhcnT6OZPAjLdZ_0E4yIpgO6UO0foaKRZKkEnf3V";
+const LOGO_URL = "/logo.png";
 
 function isActive(pathname: string, href: string): boolean {
   if (href === "/") return pathname === "/";
@@ -52,11 +52,12 @@ export function Navbar() {
         className="hidden md:flex bg-obsidian-base/80 backdrop-blur-md fixed top-0 inset-x-0 border-b border-glass-edge shadow-[0_0_20px_rgba(0,243,255,0.1)] justify-between items-center px-margin-desktop py-4 z-50"
       >
         <Link href="/" className="flex items-center h-10 w-10 shrink-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={LOGO_URL}
             alt="SYSTEM_ARCHITECT operator logo"
-            className="h-full w-full object-contain"
+            width={40}
+            height={40}
+            className="object-contain"
           />
         </Link>
 

@@ -1,5 +1,6 @@
-const LOGO_URL =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuBgm6wlQGhUzj1SNcVFxrtCwNeikwXhnfvX3WT6eDICCvxWddszlwLPZdnfJimiY3acTq8AMEhF3BL8puTrRw5POhCsvfnR5ie6tp_Hm-Jm6z6yVKu0cABkfGvZPxM2KWfeUkIn-dbdQf_yc7XvFX_n0fiHGko-WrAV-T-or6HoH9Rl6HzFVwV4iYOL2stTDKJc6TPkwaweakh_JhcnT6OZPAjLdZ_0E4yIpgO6UO0foaKRZKkEnf3V";
+import Image from "next/image";
+
+const LOGO_URL = "/logo.png";
 
 const SOCIALS = [
   { label: "GITHUB", href: "https://github.com/axx1dev" },
@@ -13,11 +14,12 @@ export function Footer() {
         <div className="col-span-12 md:col-span-6 flex flex-col justify-between gap-4">
           <div className="flex items-center gap-2">
             <div className="h-8 w-8">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={LOGO_URL}
                 alt="SYSTEM_ARCHITECT logo"
-                className="h-full w-full object-contain opacity-80"
+                width={32}
+                height={32}
+                className="object-contain opacity-80"
               />
             </div>
             <span className="font-label-caps text-label-caps text-muted-violet">
