@@ -10,7 +10,7 @@ import { Toast, type ToastState } from "../components/toast";
 type Status = "idle" | "sending" | "sent";
 
 const SOCIALS = [
-  { label: "GITHUB", href: "https://github.com/axel1vinn" },
+  { label: "GITHUB", href: "https://github.com/axx1dev" },
   { label: "LINKEDIN", href: "https://www.linkedin.com/in/axel-palacios-66a8aa118/" },
 ];
 

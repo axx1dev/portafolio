@@ -3,7 +3,8 @@ import { Sora } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "./components/navbar";
 import { Footer } from "./components/footer";
-import { PageTransition } from "./components/page-transition";
+import { FontLoader } from "./components/font-loader";
+import { PageTransitionWrapper } from "./components/page-transition-wrapper";
 
 const sora = Sora({
   variable: "--font-sora",
@@ -20,13 +21,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${sora.variable} dark`}>
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
-          rel="stylesheet"
-        />
-      </head>
       <body className="bg-obsidian-base text-on-background font-body-md min-h-screen relative overflow-x-hidden antialiased">
+        <FontLoader />
         {/* Ambient atmospheric glows shared across the journey */}
         <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
           <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] bg-electric-cyan/5 blur-[150px] rounded-full" />
@@ -38,7 +34,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
         <Navbar />
 
-        <PageTransition>{children}</PageTransition>
+        <PageTransitionWrapper>{children}</PageTransitionWrapper>
 
         <Footer />
       </body>

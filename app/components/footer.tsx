@@ -2,7 +2,7 @@ const LOGO_URL =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuBgm6wlQGhUzj1SNcVFxrtCwNeikwXhnfvX3WT6eDICCvxWddszlwLPZdnfJimiY3acTq8AMEhF3BL8puTrRw5POhCsvfnR5ie6tp_Hm-Jm6z6yVKu0cABkfGvZPxM2KWfeUkIn-dbdQf_yc7XvFX_n0fiHGko-WrAV-T-or6HoH9Rl6HzFVwV4iYOL2stTDKJc6TPkwaweakh_JhcnT6OZPAjLdZ_0E4yIpgO6UO0foaKRZKkEnf3V";
 
 const SOCIALS = [
-  { label: "GITHUB", href: "https://github.com/axel1vinn" },
+  { label: "GITHUB", href: "https://github.com/axx1dev" },
   { label: "LINKEDIN", href: "https://www.linkedin.com/in/axel-palacios-66a8aa118/" },
 ];
 

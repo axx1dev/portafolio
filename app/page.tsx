@@ -1,75 +1,10 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
 /* Home: The CV Summary — hero. */
-
-/* ---------- GridReveal: image builds up cell-by-cell like a mosaic ---------- */
-
-const GRID_COLS = 8;
-const GRID_ROWS = 12;
-
-// Random per-cell delays are impure, so they can't be produced during render
-// without breaking SSR hydration. Expose them through an external store: the
-// server snapshot is always null (every cell opaque), and the client snapshot
-// is generated once, after the store is first subscribed to on the client.
-function createOffsetStore(cells: number) {
-  let offsets: number[] | null = null;
-  return {
-    subscribe() {
-      // Nothing to subscribe to — the value never changes after creation.
-      return () => {};
-    },
-    getSnapshot() {
-      if (offsets === null) {
-        offsets = Array.from({ length: cells }, () => Math.random() * 2.4);
-      }
-      return offsets;
-    },
-    getServerSnapshot(): number[] | null {
-      return null;
-    },
-  };
-}
-
-function GridReveal({ delay = 0 }: { delay?: number }) {
-  const cells = GRID_COLS * GRID_ROWS;
-
-  const [store] = useState(() => createOffsetStore(cells));
-  const offsets = useSyncExternalStore(
-    store.subscribe,
-    store.getSnapshot,
-    store.getServerSnapshot,
-  );
-
-  return (
-    <div
-      className="absolute inset-0 grid"
-      style={{
-        gridTemplateColumns: `repeat(${GRID_COLS}, 1fr)`,
-        gridTemplateRows: `repeat(${GRID_ROWS}, 1fr)`,
-      }}
-    >
-      {Array.from({ length: cells }, (_, i) => (
-        <motion.div
-          key={i}
-          initial={{ opacity: 1 }}
-          animate={offsets ? { opacity: 0 } : { opacity: 1 }}
-          transition={{
-            duration: 0.9,
-            delay: offsets ? delay + offsets[i] : 0,
-            ease: "easeOut",
-          }}
-          className="bg-obsidian-base"
-          style={{ boxShadow: "0 0 0 0.5px var(--color-obsidian-base)" }}
-        />
-      ))}
-    </div>
-  );
-}
 
 export default function HomePage() {
   return (
@@ -92,8 +27,6 @@ export default function HomePage() {
             sizes="(max-width: 768px) 100vw, 60vw"
             className="object-cover object-center opacity-40 md:opacity-60 grayscale-[35%] contrast-110"
           />
-          {/* Mosaic build-up: cells clear away to reveal the image */}
-          <GridReveal delay={0.4} />
           {/* Left-to-right dissolve into the base background */}
           <div className="absolute inset-0 bg-gradient-to-r from-obsidian-base via-obsidian-base/80 to-transparent" />
           {/* Soft vertical feather so it blends top & bottom */}

@@ -159,6 +159,9 @@ export default function HobbiesPage() {
                     <img
                       src={item.img}
                       alt={item.tag.replace("> ", "")}
+                      loading="lazy"
+                      width={640}
+                      height={360}
                       className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 mix-blend-luminosity group-hover:mix-blend-normal"
                     />
                     <div className="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-obsidian-base to-transparent">
@@ -257,6 +260,9 @@ export default function HobbiesPage() {
                     <img
                       src={bike.img}
                       alt={bike.name}
+                      loading="lazy"
+                      width={600}
+                      height={400}
                       className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 mix-blend-luminosity group-hover:mix-blend-normal"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent to-surface-container hidden md:block" />
