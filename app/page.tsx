@@ -24,6 +24,8 @@ export default function HomePage() {
             alt=""
             fill
             priority
+            fetchPriority="high"
+            loading="eager"
             sizes="(max-width: 768px) 100vw, 60vw"
             className="object-cover object-center opacity-40 md:opacity-60 grayscale-[35%] contrast-110"
           />

@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Inline critical CSS to eliminate render-blocking stylesheet requests
+  experimental: {
+    optimizeCss: true,
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
