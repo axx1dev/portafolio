@@ -1,9 +1,19 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // Inline critical CSS to eliminate render-blocking stylesheet requests
   experimental: {
-    optimizeCss: true,
+    // Inline CSS in <head> instead of render-blocking <link> tags.
+    // Optimal for Tailwind (atomic CSS stays small) — eliminates the
+    // CSS network request that Lighthouse flags as render-blocking.
+    inlineCss: true,
+    // Tree-shake heavy packages to reduce bundle size
+    optimizePackageImports: ["framer-motion"],
+  },
+  compiler: {
+    // Remove console.* in production
+    removeConsole: {
+      exclude: ["error"],
+    },
   },
   images: {
     formats: ["image/avif", "image/webp"],

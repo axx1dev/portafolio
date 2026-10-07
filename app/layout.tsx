@@ -10,12 +10,13 @@ const sora = Sora({
   variable: "--font-sora",
   subsets: ["latin"],
   weight: ["400", "600", "700", "800"],
+  display: "optional",  // prevents CLS — no font swap after first render
+  preload: true,
 });
 
 export const metadata: Metadata = {
-  title: "SYSTEM_INITIALIZED :: Axel Palacios Fullstack Engineer",
-  description:
-    "Fullstack Developer & Performance Enthusiast. Architecting scalable digital environments while balancing the high-velocity chaos of the physical world with disciplined precision.",
+  title: "Axel Palacios Fullstack Engineer",
+  description: "Axel Palacios - Fullstack Developer, Lead Frontend Engineer, Backend Developer, and Technical Lead."
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
