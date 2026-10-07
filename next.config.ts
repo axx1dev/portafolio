@@ -2,19 +2,17 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   experimental: {
-    // Inline CSS in <head> instead of render-blocking <link> tags.
-    // Optimal for Tailwind (atomic CSS stays small) — eliminates the
-    // CSS network request that Lighthouse flags as render-blocking.
     inlineCss: true,
-    // Tree-shake heavy packages to reduce bundle size
     optimizePackageImports: ["framer-motion"],
   },
   compiler: {
-    // Remove console.* in production
     removeConsole: {
       exclude: ["error"],
     },
   },
+  // Empty turbopack config silences the webpack/turbopack mismatch warning
+  // triggered by @tailwindcss/postcss injecting a webpack config internally.
+  turbopack: {},
   images: {
     formats: ["image/avif", "image/webp"],
     remotePatterns: [
