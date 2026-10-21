@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Reveal, StaggerGroup, StaggerItem } from "../components/motion";
+import { Reveal, StaggerGroup, StaggerItem } from "../../components/motion";
 
 /* Work & CV: Technical Stack — tech grid bento + execution-history timeline. */
 

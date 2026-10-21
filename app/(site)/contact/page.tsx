@@ -2,8 +2,8 @@
 
 import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Reveal } from "../components/motion";
-import { Toast, type ToastState } from "../components/toast";
+import { Reveal } from "../../components/motion";
+import { Toast, type ToastState } from "../../components/toast";
 
 /* Contact: The Final Boss — comm-link header, status card and transmit form. */
 

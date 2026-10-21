@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Reveal, StaggerGroup, StaggerItem } from "../components/motion";
+import { Reveal, StaggerGroup, StaggerItem } from "../../components/motion";
 
 /* Hobbies: Casa vs Calle — indoor ops (CASA) and asphalt ops (CALLE). */
 
