@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { MdHome, MdFitnessCenter, MdTwoWheeler } from "react-icons/md";
 import { Reveal, StaggerGroup, StaggerItem } from "../../components/motion";
 
 /* Hobbies: Casa vs Calle — indoor ops (CASA) and asphalt ops (CALLE). */
@@ -131,9 +132,7 @@ export default function HobbiesPage() {
       {/* ---------------- SECTION: CASA ---------------- */}
       <section className="mb-section-gap">
         <Reveal className="flex items-center gap-4 mb-12 border-b border-glass-edge pb-4">
-          <span className="material-symbols-outlined text-electric-cyan text-3xl">
-            home
-          </span>
+          <MdHome className="text-electric-cyan" size={30} />
           <h2 className="font-headline-md text-headline-md text-on-surface uppercase tracking-wider">
             &gt; HOME <span className="text-muted-violet">[INDOOR_OPS]</span>
           </h2>
@@ -210,9 +209,7 @@ export default function HobbiesPage() {
                   03. Workout
                 </h3>
                 <div className="flex items-start gap-4">
-                  <span className="material-symbols-outlined text-lavender-dust text-4xl">
-                    fitness_center
-                  </span>
+                  <MdFitnessCenter className="text-lavender-dust" size={36} />
                   <div>
                     <h4 className="font-headline-md text-[18px] text-on-surface mb-2">
                       GYM
@@ -231,9 +228,7 @@ export default function HobbiesPage() {
       {/* ---------------- SECTION: CALLE ---------------- */}
       <section>
         <Reveal className="flex items-center gap-4 mb-12 border-b border-glass-edge pb-4">
-          <span className="material-symbols-outlined text-lavender-dust text-3xl">
-            two_wheeler
-          </span>
+          <MdTwoWheeler className="text-lavender-dust" size={30} />
           <h2 className="font-headline-md text-headline-md text-on-surface uppercase tracking-wider">
             &gt; STREET <span className="text-muted-violet">[ASPHALT_OPS]</span>
           </h2>

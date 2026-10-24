@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import { MdCheckCircle, MdError } from "react-icons/md";
 
 export type ToastKind = "success" | "error";
 
@@ -52,9 +53,7 @@ export function Toast({
                 : "border-error/30 bg-error/10 text-error shadow-[0_0_25px_rgba(147,0,10,0.2)]"
             }`}
           >
-            <span className="material-symbols-outlined text-lg">
-              {isSuccess ? "check_circle" : "error"}
-            </span>
+            {isSuccess ? <MdCheckCircle size={18} /> : <MdError size={18} />}
             <span className="font-mono-ui text-mono-ui">{toast.message}</span>
           </motion.div>
         )}

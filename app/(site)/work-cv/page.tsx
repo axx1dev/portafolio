@@ -1,6 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { IconType } from "react-icons";
+import {
+  MdCode,
+  MdTerminal,
+  MdDns,
+  MdCloud,
+  MdLocationOn,
+  MdDeveloperMode,
+  MdWeb,
+  MdShoppingCart,
+  MdAccountBalance,
+} from "react-icons/md";
 import { Reveal, StaggerGroup, StaggerItem } from "../../components/motion";
 
 /* Work & CV: Technical Stack — tech grid bento + execution-history timeline. */
@@ -62,9 +74,19 @@ const METHODOLOGIES = [
   "SCRUM & Agile",
 ];
 
-const EXPERIENCE = [
+type ExperienceItem = {
+  icon: IconType;
+  role: string;
+  company: string;
+  location: string;
+  period: string;
+  accent: "cyan" | "violet";
+  points: string[];
+};
+
+const EXPERIENCE: ExperienceItem[] = [
   {
-    icon: "developer_mode",
+    icon: MdDeveloperMode,
     role: "Frontend Tech Lead",
     company: "Vinneren",
     location: "Álvaro Obregón, Ciudad de México",
@@ -78,7 +100,7 @@ const EXPERIENCE = [
     ],
   },
   {
-    icon: "code",
+    icon: MdCode,
     role: "Fullstack Developer (Freelance)",
     company: "Gladdi / Smart Teaching",
     location: "Las Arboledas, Aguascalientes",
@@ -92,7 +114,7 @@ const EXPERIENCE = [
     ],
   },
   {
-    icon: "web",
+    icon: MdWeb,
     role: "Frontend Developer",
     company: "Homie",
     location: "Av. Paseo de la Reforma 296, CDMX",
@@ -107,7 +129,7 @@ const EXPERIENCE = [
     ],
   },
   {
-    icon: "shopping_cart",
+    icon: MdShoppingCart,
     role: "Fullstack Developer",
     company: "Corebiz",
     location: "Blvd. Miguel de Cervantes Saavedra 25, CDMX",
@@ -121,7 +143,7 @@ const EXPERIENCE = [
     ],
   },
   {
-    icon: "dns",
+    icon: MdDns,
     role: "Fullstack Developer",
     company: "Insaite",
     location: "Av. Ejército Nacional 351, CDMX",
@@ -137,7 +159,7 @@ const EXPERIENCE = [
     ],
   },
   {
-    icon: "account_balance",
+    icon: MdAccountBalance,
     role: "Fullstack Developer Semi Sr.",
     company: "CPA Vision",
     location: "Polanco, Hegel 141, CDMX",
@@ -197,9 +219,8 @@ export default function WorkCvPage() {
           <StaggerItem className="md:col-span-6">
             <div className="h-full bg-surface-container-low border border-glass-edge p-8 hover:border-lavender-dust/50 transition-colors group relative overflow-hidden">
               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
-                <span className="material-symbols-outlined fill text-6xl text-electric-cyan">
-                  code_blocks
-                </span>
+                {/* code_blocks has no exact react-icons/md match; MdCode is the closest */}
+                <MdCode className="text-electric-cyan" size={60} />
               </div>
               <h3 className="font-label-caps text-label-caps text-muted-violet mb-6">
                 LANGUAGES
@@ -225,9 +246,7 @@ export default function WorkCvPage() {
           <StaggerItem className="md:col-span-6">
             <div className="h-full bg-surface-container-low border border-glass-edge p-8 hover:border-lavender-dust/50 transition-colors group relative overflow-hidden">
               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
-                <span className="material-symbols-outlined fill text-6xl text-electric-cyan">
-                  terminal
-                </span>
+                <MdTerminal className="text-electric-cyan" size={60} />
               </div>
               <h3 className="font-label-caps text-label-caps text-muted-violet mb-6">
                 FRONTEND_FRAMEWORKS_AND_LIBRARIES
@@ -249,9 +268,7 @@ export default function WorkCvPage() {
           <StaggerItem className="md:col-span-12">
             <div className="h-full bg-surface-container-low border border-glass-edge p-8 hover:border-lavender-dust/50 transition-colors group relative overflow-hidden">
               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
-                <span className="material-symbols-outlined fill text-6xl text-lavender-dust">
-                  dns
-                </span>
+                <MdDns className="text-lavender-dust" size={60} />
               </div>
               <h3 className="font-label-caps text-label-caps text-muted-violet mb-6">
                 BACKEND_FRAMEWORKS_AND_LIBRARIES
@@ -349,9 +366,7 @@ export default function WorkCvPage() {
           <StaggerItem className="md:col-span-12">
             <div className="h-full bg-surface-container-low border border-glass-edge p-8 hover:border-lavender-dust/50 transition-colors group relative overflow-hidden">
               <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-30 transition-opacity">
-                <span className="material-symbols-outlined fill text-6xl text-electric-cyan">
-                  cloud
-                </span>
+                <MdCloud className="text-electric-cyan" size={60} />
               </div>
               <h3 className="font-label-caps text-label-caps text-muted-violet mb-6">
                 CLOUD_DEVOPS_SECURITY
@@ -402,6 +417,7 @@ export default function WorkCvPage() {
         <div className="space-y-8 relative overflow-hidden before:absolute before:inset-0 before:ml-[15px] before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-px before:bg-glass-edge">
           {EXPERIENCE.map((item, i) => {
             const isCyan = item.accent === "cyan";
+            const Icon = item.icon;
             return (
               <Reveal
                 key={`${item.company}-${item.period}`}
@@ -421,9 +437,7 @@ export default function WorkCvPage() {
                       : "border-lavender-dust text-lavender-dust shadow-[0_0_15px_rgba(178,152,220,0.2)]"
                   }`}
                 >
-                  <span className="material-symbols-outlined text-sm">
-                    {item.icon}
-                  </span>
+                  <Icon size={14} />
                 </div>
                 <div
                   className={`w-[calc(100%-3rem)] md:w-[calc(50%-2rem)] bg-surface-container border p-6 transition-all duration-300 ${
@@ -441,9 +455,7 @@ export default function WorkCvPage() {
                         {item.company}
                       </p>
                       <p className="font-mono-ui text-mono-ui text-on-surface-variant/70 flex items-center gap-1 mt-1">
-                        <span className="material-symbols-outlined text-[14px]">
-                          location_on
-                        </span>
+                        <MdLocationOn size={14} />
                         {item.location}
                       </p>
                     </div>

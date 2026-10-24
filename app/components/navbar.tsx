@@ -4,6 +4,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import type { IconType } from "react-icons";
+import {
+  MdTerminal,
+  MdBiotech,
+  MdFitnessCenter,
+  MdMessage,
+} from "react-icons/md";
 
 /*
   Unified navigation for the whole journey.
@@ -22,14 +29,14 @@ import { motion } from "framer-motion";
 type NavItem = {
   label: string;
   href: string;
-  icon: string;
+  icon: IconType;
 };
 
 const NAV_ITEMS: NavItem[] = [
-  { label: "Home", href: "/", icon: "terminal" },
-  { label: "Hobbies", href: "/hobbies", icon: "biotech" },
-  { label: "Work/CV", href: "/work-cv", icon: "fitness_center" },
-  { label: "Contact", href: "/contact", icon: "message" },
+  { label: "Home", href: "/", icon: MdTerminal },
+  { label: "Hobbies", href: "/hobbies", icon: MdBiotech },
+  { label: "Work/CV", href: "/work-cv", icon: MdFitnessCenter },
+  { label: "Contact", href: "/contact", icon: MdMessage },
 ];
 
 const LOGO_URL = "/logo.png";
@@ -105,6 +112,7 @@ export function Navbar() {
       >
         {NAV_ITEMS.map((item) => {
           const active = isActive(pathname, item.href);
+          const Icon = item.icon;
           return (
             <Link
               key={item.href}
@@ -117,11 +125,7 @@ export function Navbar() {
                   : "flex flex-col items-center justify-center text-lavender-dust p-3 hover:text-electric-cyan transition-all hover:scale-110 duration-300"
               }
             >
-              <span
-                className={`material-symbols-outlined text-[20px] ${active ? "fill" : ""}`}
-              >
-                {item.icon}
-              </span>
+              <Icon size={20} />
             </Link>
           );
         })}

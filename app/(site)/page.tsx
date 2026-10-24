@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { MdTerminal, MdDataObject, MdViewInAr } from "react-icons/md";
 
 /* Home: The CV Summary — hero. */
 
@@ -44,9 +45,7 @@ export default function HomePage() {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 border border-glass-edge bg-surface-container/50 px-4 py-2 clipped-corner-bl backdrop-blur-sm"
           >
-            <span className="material-symbols-outlined fill text-electric-cyan text-[16px]">
-              terminal
-            </span>
+            <MdTerminal className="text-electric-cyan" size={16} />
             <span className="font-label-caps text-label-caps text-lavender-dust">
               STATUS: ONLINE
             </span>
@@ -93,18 +92,15 @@ export default function HomePage() {
               href="/work-cv"
               className="bg-electric-cyan text-obsidian-base font-label-caps text-label-caps px-8 py-4 clipped-corner glow-cyan-hover transition-all flex items-center gap-2 hover:scale-105 duration-300"
             >
-              <span className="material-symbols-outlined text-[18px]">
-                data_object
-              </span>
+              <MdDataObject size={18} />
               TECH_STACK.json
             </Link>
             <Link
               href="/hobbies"
               className="border border-lavender-dust text-lavender-dust font-label-caps text-label-caps px-8 py-4 clipped-corner hover:border-electric-cyan hover:text-electric-cyan transition-all flex items-center gap-2 hover:bg-electric-cyan/5"
             >
-              <span className="material-symbols-outlined text-[18px]">
-                deployed_code
-              </span>
+              {/* deployed_code has no exact react-icons/md match; MdViewInAr (3D box) is the closest */}
+              <MdViewInAr size={18} />
               HOBBIES.LOG
             </Link>
           </motion.div>

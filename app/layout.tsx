@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { Sora } from "next/font/google";
 import "./globals.css";
-import { FontLoader } from "./components/font-loader";
 
 const sora = Sora({
   variable: "--font-sora",
   subsets: ["latin"],
   weight: ["400", "600", "700", "800"],
-  display: "optional",  // prevents CLS — no font swap after first render
+  display: "swap",
   preload: true,
 });
 
@@ -20,7 +19,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${sora.variable} dark`}>
       <body className="bg-obsidian-base text-on-background font-body-md min-h-screen relative overflow-x-hidden antialiased">
-        <FontLoader />
         {children}
       </body>
     </html>

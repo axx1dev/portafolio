@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { MdArrowForward, MdAutorenew, MdCheckCircle } from "react-icons/md";
 import { Reveal } from "../../components/motion";
 import { Toast, type ToastState } from "../../components/toast";
 
@@ -213,25 +214,22 @@ export default function ContactPage() {
                       {status === "idle" && (
                         <>
                           INITIALIZE_TRANSFER
-                          <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">
-                            arrow_forward
-                          </span>
+                          <MdArrowForward
+                            size={14}
+                            className="group-hover/btn:translate-x-1 transition-transform"
+                          />
                         </>
                       )}
                       {status === "sending" && (
                         <>
                           TRANSMITTING
-                          <span className="material-symbols-outlined text-sm animate-spin">
-                            progress_activity
-                          </span>
+                          <MdAutorenew size={14} className="animate-spin" />
                         </>
                       )}
                       {status === "sent" && (
                         <>
                           PACKET_DELIVERED
-                          <span className="material-symbols-outlined text-sm">
-                            check_circle
-                          </span>
+                          <MdCheckCircle size={14} />
                         </>
                       )}
                     </motion.span>

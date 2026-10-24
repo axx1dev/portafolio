@@ -2,6 +2,7 @@
 
 import { useCallback, useRef } from "react";
 import { Countdown } from "../../components/countdown";
+import { cinzel, fredoka, outfit } from "../fonts";
 
 /*
   /invitacion — Pokémon Baby Shower invitation.
@@ -313,19 +314,19 @@ export default function InvitacionPage() {
   }, []);
 
   return (
-    <div className="invitacion-root bg-pokemon-sunburst fixed inset-0 z-[100] overflow-y-auto overflow-x-hidden text-slate-800 antialiased selection:bg-amber-200">
-      {/* Scoped styles — fonts + all original Stitch CSS */}
+    <div
+      className={`invitacion-root bg-pokemon-sunburst fixed inset-0 z-[100] overflow-y-auto overflow-x-hidden text-slate-800 antialiased selection:bg-amber-200 ${cinzel.variable} ${fredoka.variable} ${outfit.variable}`}
+    >
+      {/* Scoped styles — fonts (via next/font CSS variables) + all original Stitch CSS */}
       <style jsx global>{`
-        @import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Fredoka:wght@400;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap");
-
         .invitacion-root {
-          font-family: "Outfit", sans-serif;
+          font-family: var(--font-outfit), sans-serif;
         }
         .font-fredoka {
-          font-family: "Fredoka", sans-serif;
+          font-family: var(--font-fredoka), sans-serif;
         }
         .font-cinzel {
-          font-family: "Cinzel", serif;
+          font-family: var(--font-cinzel), serif;
         }
 
         @keyframes pulseRing {
@@ -651,7 +652,7 @@ export default function InvitacionPage() {
           pointer-events: none;
         }
         .pokemon-logo-text {
-          font-family: "Fredoka", cursive, sans-serif;
+          font-family: var(--font-fredoka), cursive, sans-serif;
           font-weight: 800;
           color: #ffcb05;
           text-transform: capitalize;
@@ -664,7 +665,7 @@ export default function InvitacionPage() {
           transform: perspective(300px) rotateX(8deg) scaleY(1.05);
         }
         .its-a-boy-title {
-          font-family: "Fredoka", sans-serif;
+          font-family: var(--font-fredoka), sans-serif;
           font-weight: 800;
           color: #38bdf8;
           letter-spacing: 4px;
