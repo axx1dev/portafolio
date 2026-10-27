@@ -176,32 +176,35 @@ const EXPERIENCE: ExperienceItem[] = [
 
 export default function WorkCvPage() {
   return (
-    <main className="pt-32 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+    <main className="pt-[40px] pb-[40px] md:pt-32 md:pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
       {/* ---------------- HEADER ---------------- */}
       <section className="mb-32">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          className="inline-flex items-center gap-2 mb-4"
+        >
+          <span className="w-8 h-px bg-electric-cyan" />
+          <span className="font-label-caps text-label-caps text-electric-cyan uppercase tracking-[0.3em]">
+            System Identity
+          </span>
+        </motion.div>
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="font-headline-lg-mobile md:font-headline-xl text-headline-lg-mobile md:text-headline-xl text-on-surface mb-6 relative inline-block group"
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="font-headline-lg-mobile md:font-headline-xl text-headline-lg-mobile md:text-headline-xl text-on-surface mb-6"
         >
-          RESUME
-          <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric-cyan to-muted-violet">
-            HARDSKILLS
-          </span>
-          <div className="absolute -inset-4 bg-electric-cyan/10 blur-2xl -z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+          RESUME<span className="text-electric-cyan">.HARDSKILLS</span>
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl border-l-2 border-muted-violet pl-6 py-2"
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="font-body-lg text-body-lg text-lavender-dust max-w-2xl border-l-2 border-muted-violet pl-4"
         >
-          <span className="text-electric-cyan mr-2">&gt;</span> SYSTEM_STATUS:
-          ONLINE. INITIALIZING KNOWLEDGE BASE.
-          <br />
-          <span className="text-electric-cyan mr-2">&gt;</span> FullStack Engineer | Frontend Architecture & Robust Backends Built for Precision
+          FullStack Engineer | Frontend Architecture & Robust Backends Built for Precision.
         </motion.p>
       </section>
 

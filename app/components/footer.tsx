@@ -9,7 +9,7 @@ const SOCIALS = [
 
 export function Footer() {
   return (
-    <footer className="relative z-10 w-full py-20 px-margin-mobile md:px-margin-desktop border-t border-glass-edge bg-obsidian-base mb-24 md:mb-0">
+    <footer className="relative z-10 w-full py-[40px] md:py-20 px-margin-mobile md:px-margin-desktop border-t border-glass-edge bg-obsidian-base mb-24 md:mb-0">
       <div className="grid grid-cols-12 gap-base max-w-container-max mx-auto">
         <div className="col-span-12 md:col-span-6 flex flex-col justify-between gap-4">
           <div className="flex items-center gap-2">

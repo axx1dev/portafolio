@@ -70,18 +70,20 @@ export default function ContactPage() {
   }
 
   return (
-    <main className="pt-32 md:pt-40 pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto min-h-[90vh] flex flex-col justify-center">
+    <main className="pt-[40px] pb-[40px] md:pt-40 md:pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto min-h-[90vh] flex flex-col justify-center">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-start">
         {/* Left column: header + status */}
         <Reveal className="md:col-span-5 md:col-start-2 mb-12 md:mb-0">
-          <div className="font-mono-ui text-mono-ui text-electric-cyan mb-4 flex items-center gap-2">
-            <span className="w-8 h-px bg-electric-cyan block" />
-            COMMUNICATION PROTOCOL
+          <div className="inline-flex items-center gap-2 mb-4">
+            <span className="w-8 h-px bg-electric-cyan" />
+            <span className="font-label-caps text-label-caps text-electric-cyan uppercase tracking-[0.3em]">
+              System Identity
+            </span>
           </div>
-          <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white mb-6 uppercase tracking-tight">
-            CONTACT_ME
+          <h1 className="font-headline-lg-mobile md:font-headline-xl text-headline-lg-mobile md:text-headline-xl text-on-surface mb-6">
+            CONTACT<span className="text-electric-cyan">_ME</span>
           </h1>
-          <p className="font-body-md text-body-md text-on-surface-variant mb-12 max-w-md">
+          <p className="font-body-lg text-body-lg text-lavender-dust max-w-2xl border-l-2 border-muted-violet pl-4 mb-12">
             Secure channel ready for transmission. Initiate handshake below to
             transmit messages to me.
           </p>

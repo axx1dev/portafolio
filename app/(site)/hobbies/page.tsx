@@ -97,7 +97,7 @@ function gameTagClass(accent: "cyan" | "violet" | "muted") {
 
 export default function HobbiesPage() {
   return (
-    <main className="pt-[120px] pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
+    <main className="pt-[40px] pb-[40px] md:pt-[120px] md:pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
       {/* ---------------- HEADER ---------------- */}
       <header className="mb-24">
         <motion.div

@@ -9,7 +9,7 @@ import { MdTerminal, MdDataObject, MdViewInAr } from "react-icons/md";
 
 export default function HomePage() {
   return (
-    <main className="pt-[100px] md:pt-[120px] pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto space-y-section-gap">
+    <main className="pt-[40px] pb-[40px] md:pt-[120px] md:pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto space-y-section-gap">
       {/* ---------------- HERO ---------------- */}
       <section className="relative grid grid-cols-1 md:grid-cols-12 gap-gutter items-center min-h-[70vh]">
         {/* Faded portrait backdrop — right anchored, dissolving to the left */}
