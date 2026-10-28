@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { m } from "framer-motion";
 import { MdHome, MdFitnessCenter, MdTwoWheeler } from "react-icons/md";
 import { Reveal, StaggerGroup, StaggerItem } from "../../components/motion";
 
@@ -100,9 +101,10 @@ export default function HobbiesPage() {
     <main className="pt-[40px] pb-[40px] md:pt-[120px] md:pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto w-full">
       {/* ---------------- HEADER ---------------- */}
       <header className="mb-24">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.5 }}
           className="inline-flex items-center gap-2 mb-4"
         >
@@ -110,23 +112,25 @@ export default function HobbiesPage() {
           <span className="font-label-caps text-label-caps text-electric-cyan uppercase tracking-[0.3em]">
             System Identity
           </span>
-        </motion.div>
-        <motion.h1
+        </m.div>
+        <m.h1
           initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="font-headline-lg-mobile md:font-headline-xl text-headline-lg-mobile md:text-headline-xl text-on-surface mb-6"
         >
           HOBBIES<span className="text-electric-cyan">.LOG</span>
-        </motion.h1>
-        <motion.p
+        </m.h1>
+        <m.p
           initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="font-body-lg text-body-lg text-lavender-dust max-w-2xl border-l-2 border-muted-violet pl-4"
         >
           Categorized into routines for home and street—it’s a little bit of what I’m passionate about.   
-        </motion.p>
+        </m.p>
       </header>
 
       {/* ---------------- SECTION: CASA ---------------- */}
@@ -154,14 +158,13 @@ export default function HobbiesPage() {
                         : "hover:border-lavender-dust/50 hover:shadow-[0_0_30px_rgba(178,152,220,0.15)]"
                     }`}
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    {/* next/image resizes these remote images and serves AVIF/WebP */}
+                    <Image
                       src={item.img}
                       alt={item.tag.replace("> ", "")}
-                      loading="lazy"
-                      width={640}
-                      height={360}
-                      className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 mix-blend-luminosity group-hover:mix-blend-normal"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+                      className="object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 mix-blend-luminosity group-hover:mix-blend-normal"
                     />
                     <div className="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-obsidian-base to-transparent">
                       <span
@@ -251,14 +254,12 @@ export default function HobbiesPage() {
                   }`}
                 >
                   <div className="w-full md:w-1/2 h-[200px] md:h-full relative overflow-hidden">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
+                    <Image
                       src={bike.img}
                       alt={bike.name}
-                      loading="lazy"
-                      width={600}
-                      height={400}
-                      className="w-full h-full object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 mix-blend-luminosity group-hover:mix-blend-normal"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 25vw"
+                      className="object-cover opacity-70 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 mix-blend-luminosity group-hover:mix-blend-normal"
                     />
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent to-surface-container hidden md:block" />
                     <div className="absolute inset-0 bg-gradient-to-t from-surface-container to-transparent md:hidden block" />

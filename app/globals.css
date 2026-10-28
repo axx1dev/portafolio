@@ -222,6 +222,31 @@ body {
   }
 }
 
+/*
+  Mobile bottom-nav entrance. Pure CSS so the nav is painted from the first
+  frame instead of waiting for framer-motion to hydrate. Animates `transform`
+  only, which doesn't clash with Tailwind v4's `translate` property used by
+  -translate-x-1/2 for centering.
+*/
+.nav-rise {
+  animation: nav-rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+@keyframes nav-rise {
+  from {
+    opacity: 0;
+    transform: translateY(80px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-rise {
+    animation: none;
+  }
+}
+
 /* Focus glow for form inputs (Contact screen) */
 input:focus,
 textarea:focus {

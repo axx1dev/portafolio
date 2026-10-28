@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import type { IconType } from "react-icons";
 import {
   MdCode,
@@ -179,9 +179,10 @@ export default function WorkCvPage() {
     <main className="pt-[40px] pb-[40px] md:pt-32 md:pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
       {/* ---------------- HEADER ---------------- */}
       <section className="mb-32">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.5 }}
           className="inline-flex items-center gap-2 mb-4"
         >
@@ -189,23 +190,25 @@ export default function WorkCvPage() {
           <span className="font-label-caps text-label-caps text-electric-cyan uppercase tracking-[0.3em]">
             System Identity
           </span>
-        </motion.div>
-        <motion.h1
+        </m.div>
+        <m.h1
           initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
           className="font-headline-lg-mobile md:font-headline-xl text-headline-lg-mobile md:text-headline-xl text-on-surface mb-6"
         >
           RESUME<span className="text-electric-cyan">.HARDSKILLS</span>
-        </motion.h1>
-        <motion.p
+        </m.h1>
+        <m.p
           initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="font-body-lg text-body-lg text-lavender-dust max-w-2xl border-l-2 border-muted-violet pl-4"
         >
           FullStack Engineer | Frontend Architecture & Robust Backends Built for Precision.
-        </motion.p>
+        </m.p>
       </section>
 
       {/* ---------------- TECH GRID ---------------- */}
@@ -394,12 +397,12 @@ export default function WorkCvPage() {
                 TOOLS_METHODOLOGIES
               </h3>
               <div className="flex flex-wrap gap-3">
-                {METHODOLOGIES.map((m) => (
+                {METHODOLOGIES.map((method) => (
                   <span
-                    key={m}
+                    key={method}
                     className="px-4 py-2 border border-glass-edge text-lavender-dust font-mono-ui text-mono-ui bg-secondary-container/10"
                   >
-                    {m}
+                    {method}
                   </span>
                 ))}
               </div>

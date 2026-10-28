@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { MdCheckCircle, MdError } from "react-icons/md";
 
 export type ToastKind = "success" | "error";
@@ -38,7 +38,7 @@ export function Toast({
     <div className="pointer-events-none fixed inset-x-0 bottom-6 z-[9999] flex justify-end px-6">
       <AnimatePresence>
         {toast && (
-          <motion.div
+          <m.div
             key={toast.message}
             initial={{ opacity: 0, y: 24, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -55,7 +55,7 @@ export function Toast({
           >
             {isSuccess ? <MdCheckCircle size={18} /> : <MdError size={18} />}
             <span className="font-mono-ui text-mono-ui">{toast.message}</span>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>,

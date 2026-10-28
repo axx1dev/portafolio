@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { MdArrowForward, MdAutorenew, MdCheckCircle } from "react-icons/md";
 import { Reveal } from "../../components/motion";
 import { Toast, type ToastState } from "../../components/toast";
@@ -185,7 +185,7 @@ export default function ContactPage() {
               </div>
 
               <div className="pt-4">
-                <motion.button
+                <m.button
                   type="submit"
                   disabled={status === "sending" || !isComplete}
                   whileHover={
@@ -205,7 +205,7 @@ export default function ContactPage() {
                   }`}
                 >
                   <AnimatePresence mode="wait" initial={false}>
-                    <motion.span
+                    <m.span
                       key={status}
                       initial={{ opacity: 0, y: 6 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -234,9 +234,9 @@ export default function ContactPage() {
                           <MdCheckCircle size={14} />
                         </>
                       )}
-                    </motion.span>
+                    </m.span>
                   </AnimatePresence>
-                </motion.button>
+                </m.button>
               </div>
             </div>
           </form>

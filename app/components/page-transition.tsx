@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import type { ReactNode } from "react";
 
 /*
@@ -13,7 +13,7 @@ export function PageTransition({ children }: { children: ReactNode }) {
 
   return (
     <AnimatePresence mode="wait" initial={false}>
-      <motion.div
+      <m.div
         key={pathname}
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
@@ -22,7 +22,7 @@ export function PageTransition({ children }: { children: ReactNode }) {
         className="relative z-10 w-full max-w-full overflow-x-clip"
       >
         {children}
-      </motion.div>
+      </m.div>
     </AnimatePresence>
   );
 }

@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import type { IconType } from "react-icons";
 import {
   MdTerminal,
@@ -24,6 +24,15 @@ import {
     Home/Hobbies/Work/Contact with the active item derived from the route.
   - The Home screen listed the menu order as Home / Hobbies / Work/CV /
     Contact — kept consistent everywhere.
+
+  Performance notes:
+  - Uses `m.*` under the (site) MotionProvider (LazyMotion).
+  - The mobile bottom nav is a plain <nav> with a CSS entrance
+    (`.nav-rise` in globals.css). With framer-motion its server HTML started
+    at opacity:0 and stayed invisible until the JS hydrated, which is what
+    made the mobile icons appear so late.
+  - The desktop underline grows in with scaleX instead of a shared
+    `layoutId`, because layout animations require the heavier domMax bundle.
 */
 
 type NavItem = {
@@ -52,7 +61,7 @@ export function Navbar() {
   return (
     <>
       {/* TopAppBar — Desktop */}
-      <motion.nav
+      <m.nav
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
@@ -84,10 +93,11 @@ export function Navbar() {
               >
                 {item.label}
                 {active && (
-                  <motion.span
-                    layoutId="nav-underline"
-                    className="absolute left-0 -bottom-1 h-0.5 w-full bg-electric-cyan shadow-[0_0_8px_#00f3ff]"
+                  <m.span
+                    initial={{ scaleX: 0 }}
+                    animate={{ scaleX: 1 }}
                     transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    className="absolute left-0 -bottom-1 h-0.5 w-full origin-left bg-electric-cyan shadow-[0_0_8px_#00f3ff]"
                   />
                 )}
               </Link>
@@ -101,15 +111,10 @@ export function Navbar() {
         >
           Connect
         </Link>
-      </motion.nav>
+      </m.nav>
 
-      {/* BottomNavBar — Mobile */}
-      <motion.nav
-        initial={{ y: 80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-        className="md:hidden bg-surface-container/90 backdrop-blur-xl fixed bottom-8 left-1/2 -translate-x-1/2 rounded-full px-6 py-3 w-max border border-glass-edge shadow-[0_0_40px_rgba(178,152,220,0.15)] z-50 flex items-center gap-3"
-      >
+      {/* BottomNavBar — Mobile (CSS entrance, visible without waiting for JS) */}
+      <nav className="nav-rise md:hidden bg-surface-container/90 backdrop-blur-xl fixed bottom-8 left-1/2 -translate-x-1/2 rounded-full px-6 py-3 w-max border border-glass-edge shadow-[0_0_40px_rgba(178,152,220,0.15)] z-50 flex items-center gap-3">
         {NAV_ITEMS.map((item) => {
           const active = isActive(pathname, item.href);
           const Icon = item.icon;
@@ -129,7 +134,7 @@ export function Navbar() {
             </Link>
           );
         })}
-      </motion.nav>
+      </nav>
     </>
   );
 }

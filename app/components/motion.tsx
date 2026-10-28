@@ -1,11 +1,13 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
+import { m, type Variants } from "framer-motion";
 import type { ComponentProps, ReactNode } from "react";
 
 /*
   Small reusable animation primitives shared across the journey.
-  These use whileInView so sections animate as they scroll into view.
+  These use whileInView so sections only animate when they scroll into
+  view, instead of every animation running in the first second of the page.
+  They render `m.*` and rely on the (site) MotionProvider (LazyMotion).
 */
 
 export const fadeUp: Variants = {
@@ -28,12 +30,12 @@ type RevealProps = {
   children: ReactNode;
   className?: string;
   delay?: number;
-} & Omit<ComponentProps<typeof motion.div>, "children">;
+} & Omit<ComponentProps<typeof m.div>, "children">;
 
 /** Reveals its content with a fade + rise the first time it enters the viewport. */
 export function Reveal({ children, className, delay = 0, ...rest }: RevealProps) {
   return (
-    <motion.div
+    <m.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-80px" }}
@@ -49,7 +51,7 @@ export function Reveal({ children, className, delay = 0, ...rest }: RevealProps)
       {...rest}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
@@ -60,7 +62,7 @@ export function StaggerGroup({
   ...rest
 }: RevealProps) {
   return (
-    <motion.div
+    <m.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-60px" }}
@@ -69,14 +71,14 @@ export function StaggerGroup({
       {...rest}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }
 
 export function StaggerItem({ children, className, ...rest }: RevealProps) {
   return (
-    <motion.div variants={fadeUp} className={className} {...rest}>
+    <m.div variants={fadeUp} className={className} {...rest}>
       {children}
-    </motion.div>
+    </m.div>
   );
 }
