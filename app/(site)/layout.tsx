@@ -2,6 +2,7 @@ import { Navbar } from "../components/navbar";
 import { Footer } from "../components/footer";
 import { PageTransitionWrapper } from "../components/page-transition-wrapper";
 import { MotionProvider } from "../components/motion-provider";
+import { HomeLoader } from "../components/home-loader";
 
 /*
   (site) layout — the shared portfolio chrome: ambient glows, scanlines,
@@ -33,6 +34,10 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       <PageTransitionWrapper>{children}</PageTransitionWrapper>
 
       <Footer />
+
+      {/* First-load progress screen, home only. Rendered here (outside the
+          page transition's z-10 stacking context) so it covers the navbar. */}
+      <HomeLoader />
     </MotionProvider>
   );
 }

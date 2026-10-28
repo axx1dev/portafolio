@@ -247,6 +247,45 @@ body {
   }
 }
 
+/*
+  Home loader failsafe: if JavaScript never runs (blocked, crashed), hide
+  the loading screen after 12s so the page can't stay covered forever.
+  Normally the loader removes itself long before this.
+*/
+.home-loader-failsafe {
+  animation: home-loader-failsafe 0s linear 12s forwards;
+}
+@keyframes home-loader-failsafe {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+/*
+  Home loader pre-hydration creep: before JavaScript runs, the bar eases
+  toward ~30% on its own so it never looks frozen on a slow phone. The
+  loader stops this animation on hydration and continues with a spring
+  from wherever the bar visually is.
+*/
+.home-loader-boot {
+  animation: home-loader-boot 4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes home-loader-boot {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(0.3);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-loader-boot {
+    animation: none;
+  }
+}
+
 /* Focus glow for form inputs (Contact screen) */
 input:focus,
 textarea:focus {

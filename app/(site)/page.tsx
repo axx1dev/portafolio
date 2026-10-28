@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { m } from "framer-motion";
 import { MdTerminal, MdDataObject, MdViewInAr } from "react-icons/md";
 
@@ -16,32 +15,6 @@ export default function HomePage() {
     <main className="pt-[40px] pb-[40px] md:pt-[120px] md:pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto space-y-section-gap">
       {/* ---------------- HERO ---------------- */}
       <section className="relative grid grid-cols-1 md:grid-cols-12 gap-gutter items-center min-h-[70vh]">
-        {/* Faded portrait backdrop — right anchored, dissolving to the left */}
-        <m.div
-          initial={{ opacity: 0, x: 60 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={inView}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          aria-hidden
-          className="pointer-events-none absolute inset-y-0 right-[-20px] md:right-[-40px] w-full md:w-3/5 -z-0 overflow-hidden select-none"
-        >
-          <Image
-            src="/axel_gym.jpeg"
-            alt=""
-            fill
-            fetchPriority="high"
-            loading="eager"
-            sizes="(max-width: 768px) 100vw, 60vw"
-            className="object-cover object-center opacity-40 md:opacity-60 grayscale-[35%] contrast-110"
-          />
-          {/* Left-to-right dissolve into the base background */}
-          <div className="absolute inset-0 bg-gradient-to-r from-obsidian-base via-obsidian-base/80 to-transparent" />
-          {/* Soft vertical feather so it blends top & bottom */}
-          <div className="absolute inset-0 bg-gradient-to-b from-obsidian-base/60 via-transparent to-obsidian-base/60" />
-          {/* Faint cyan tint to match the neon look and feel */}
-          <div className="absolute inset-0 bg-electric-cyan/5 mix-blend-screen" />
-        </m.div>
-
         <div className="md:col-span-12 space-y-8 z-10 relative">
           <m.div
             initial={{ opacity: 0, y: 20 }}
